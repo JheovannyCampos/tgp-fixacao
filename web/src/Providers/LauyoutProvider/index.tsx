@@ -1,12 +1,14 @@
 import { ReactNode } from "react";
 import { LayoutContext } from "./context";
+import Header from "../../components/Layout/Header";
+import Footer from "@/components/Layout/Footer";
 
 const LayoutProvider = ({ children }: { children: ReactNode }) => {
   return (
     <LayoutContext.Provider value={{}}>
-      <header>Header aqui</header>
+      <Header />
       {children}
-      <footer>Footer aqui</footer>
+      <Footer />
     </LayoutContext.Provider>
   );
 };

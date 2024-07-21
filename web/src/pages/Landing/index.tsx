@@ -1,6 +1,13 @@
+import IntroductionSection from "@/components/Landing/Sections/Introduction";
+import Services from "@/components/Landing/Sections/Services";
+
 const Landing = () => {
-  //macaco macaco
-  return <div>Hello eu quem digo</div>;
+  return (
+    <div>
+      <IntroductionSection />
+      <Services />
+    </div>
+  );
 };
 
 export default Landing;

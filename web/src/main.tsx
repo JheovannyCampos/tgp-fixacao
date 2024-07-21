@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Landing from "./pages/Landing";
 import LayoutProvider from "./Providers/LauyoutProvider";
 
+import "./global.css";
+
 const router = createBrowserRouter([
   {
     path: "/",
