@@ -13,5 +13,9 @@ export const principalType = defineType({
       name: 'SubTitulo',
       type: 'string',
     }),
+    defineField({
+      name: 'Teste',
+      type: 'image',
+    }),
   ],
 })
