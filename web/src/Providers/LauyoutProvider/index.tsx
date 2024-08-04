@@ -19,15 +19,15 @@ const LayoutContext = createContext<LayoutContextProps | undefined>(undefined);
 const LayoutProvider = ({ children }: { children: ReactNode }) => {
   const [siteData, setSiteDate] = useState([]);
 
-  const fetchSiteData = useCallback(async () => {
+  const fetchSiteData = async () => {
     const resp = await api.get("/data");
 
     setSiteDate(resp.data);
-  }, []);
+  };
 
   useEffect(() => {
     fetchSiteData();
-  }, [fetchSiteData]);
+  }, []);
 
   return (
     <LayoutContext.Provider value={{ siteData }}>
