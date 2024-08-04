@@ -12,8 +12,8 @@ const Services = () => {
           de alta qualidade.
         </p>
       </div>
-      <div className="w-full flex">
-        <div className="max-w-[50%]">
+      <div className="w-full flex ">
+        <div className="w-[50%]">
           <ul className="gap-6 pl-[200px] flex flex-col h-full justify-center">
             <li>
               <div className="grid gap-1">
@@ -44,12 +44,8 @@ const Services = () => {
             </li>
           </ul>
         </div>
-        <div className="max-w-[50%0] h-full">
-          <img
-            className="max-w-[560px] p-[60px] pt-0"
-            src="https://i.pinimg.com/736x/12/82/1a/12821aef23d6a0615e08d056bf5018e1.jpg"
-            alt="d"
-          />
+        <div className="w-[50%] h-full flex justify-center">
+          <img src="assets/predio.png" alt="d" />
         </div>
       </div>
     </div>

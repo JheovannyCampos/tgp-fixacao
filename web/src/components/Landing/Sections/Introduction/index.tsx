@@ -6,18 +6,20 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useLayout } from "@/Providers/LauyoutProvider";
 import Autoplay from "embla-carousel-autoplay";
 
 const IntroductionSection = () => {
+  const { siteData } = useLayout();
+
+  console.log("siteData", siteData);
+
   return (
     <div className="w-full h-[620px] flex">
       <div className="w-[50%] h-full pl-[60px] flex flex-col gap-3 justify-center">
-        <h1 className="font-bold text-5xl">
-          Fachadas de Porcelanato <br></br>em Belo Horizonte
-        </h1>
+        <h1 className="font-bold text-5xl">{siteData[0]?.Titulo}</h1>
         <span className="max-w-[600px] text-muted-foreground md:text-xl">
-          Transforme a aparência do seu prédio com a nossa expertise em fixação
-          de fachadas de porcelanato.
+          {siteData[0]?.SubTitulo}
         </span>
         <div className="flex gap-4">
           <Button className="bg-blue-500 w-[120px] hover:bg-blue-600">
@@ -28,9 +30,9 @@ const IntroductionSection = () => {
           </Button>
         </div>
       </div>
-      <div className="w-[50%] h-full">
+      <div className="w-[50%] h-full flex justify-center">
         <Carousel
-          className="h-full w-[82%]"
+          className="w-[38.5vw]"
           opts={{
             loop: true,
           }}
@@ -40,24 +42,21 @@ const IntroductionSection = () => {
             }),
           ]}
         >
-          <CarouselContent>
+          <CarouselContent className="h-[620px]">
             <CarouselItem>
-              <img
-                src="https://static.wikia.nocookie.net/c9dde1fd-8d96-4288-97ea-6dca45a39891/scale-to-width/755"
-                alt="a"
-              />
+              <img src="assets/charles.JPG" alt="a" className="object-cover" />
             </CarouselItem>
             <CarouselItem>
-              <img
-                src="https://static.wikia.nocookie.net/0b1c376c-8479-4742-9744-597f7b1ec5e5/scale-to-width/755"
-                alt="b"
-              />
+              <img src="assets/chateau.jpg" alt="b" className="object-cover" />
             </CarouselItem>
-            <CarouselItem className="flex items-center justify-center =">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMQZqnDpXms239q3z3mn1FJdAdyjOGmAA--w&s"
-                alt="c"
-              />
+            <CarouselItem>
+              <img src="assets/itau.JPG" alt="c" className="object-cover" />
+            </CarouselItem>
+            <CarouselItem>
+              <img src="assets/montma.JPG" alt="c" className="object-cover" />
+            </CarouselItem>
+            <CarouselItem>
+              <img src="assets/unique.JPG" alt="c" className="object-cover" />
             </CarouselItem>
           </CarouselContent>
           <CarouselPrevious />
