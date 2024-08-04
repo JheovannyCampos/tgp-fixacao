@@ -6,7 +6,7 @@ export const principalType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'titulo',
+      name: 'title',
       title: 'Titulo',
       type: 'string',
     }),
