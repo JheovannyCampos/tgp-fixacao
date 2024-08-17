@@ -29,6 +29,8 @@ function urlFor(source: any) {
   return builder.image(source);
 }
 
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
 app.get("/data", async (req, res) => {
   try {
     const query =
@@ -60,3 +62,5 @@ app.get("/data", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
+
+module.exports = app;
