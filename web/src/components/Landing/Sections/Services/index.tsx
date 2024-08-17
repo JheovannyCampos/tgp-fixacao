@@ -12,9 +12,9 @@ const Services = () => {
           de alta qualidade.
         </p>
       </div>
-      <div className="w-full flex ">
-        <div className="w-[50%]">
-          <ul className="gap-6 pl-[200px] flex flex-col h-full justify-center">
+      <div className="w-full flex flex-col md:flex-row gap-3 lg:gap-0">
+        <div className="lg:w-[50%] w-full">
+          <ul className="gap-6 lg:pl-[200px] px-2 flex flex-col h-full justify-center">
             <li>
               <div className="grid gap-1">
                 <h3 className="text-xl font-bold">Projeto Personalizado</h3>
@@ -44,8 +44,8 @@ const Services = () => {
             </li>
           </ul>
         </div>
-        <div className="w-[50%] h-full flex justify-center">
-          <img src="assets/predio.png" alt="d" />
+        <div className="lg:w-[50%] w-full h-full flex justify-center">
+          <img src="assets/predio.png" alt="d" className="rounded-lg" />
         </div>
       </div>
     </div>

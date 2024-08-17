@@ -4,6 +4,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import Header from "../../components/Layout/Header";
@@ -12,12 +13,14 @@ import api from "@/services/api";
 
 type LayoutContextProps = {
   siteData: any;
+  contactRef: React.MutableRefObject<HTMLDivElement | null>;
 };
 
 const LayoutContext = createContext<LayoutContextProps | undefined>(undefined);
 
 const LayoutProvider = ({ children }: { children: ReactNode }) => {
   const [siteData, setSiteDate] = useState([]);
+  const contactRef = useRef<HTMLDivElement | null>(null);
 
   const fetchSiteData = async () => {
     const resp = await api.get("/data");
@@ -29,8 +32,13 @@ const LayoutProvider = ({ children }: { children: ReactNode }) => {
     fetchSiteData();
   }, []);
 
+  const value = {
+    siteData,
+    contactRef,
+  };
+
   return (
-    <LayoutContext.Provider value={{ siteData }}>
+    <LayoutContext.Provider value={value}>
       <Header />
       {children}
       <Footer />

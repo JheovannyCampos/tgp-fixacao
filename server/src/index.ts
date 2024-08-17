@@ -2,6 +2,7 @@ import express from "express";
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
@@ -9,11 +10,17 @@ const app = express();
 const port = 3000;
 
 const client = createClient({
-  projectId: process.env.SANITY_PROJECT_ID || "", // ID do seu projeto
-  dataset: process.env.SANITY_DATASET || "", // Dataset
-  useCdn: true, // `false` se você quiser conteúdo mais recente
-  token: process.env.SANITY_TOKEN || "", // Token de autenticação
+  projectId: process.env.SANITY_PROJECT_ID || "",
+  dataset: process.env.SANITY_DATASET || "",
+  useCdn: true,
+  token: process.env.SANITY_TOKEN || "",
 });
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 // Configurar o URL Builder
 const builder = imageUrlBuilder(client);
@@ -25,7 +32,7 @@ function urlFor(source: any) {
 app.get("/data", async (req, res) => {
   try {
     const query =
-      '*[_type == "tgpfixacao"]{titulo, subTitle, image1, image2, image3, image4, image5}';
+      '*[_type == "tgpfixacao"]{title, subTitle, image1, image2, image3, image4, image5}';
     const data = await client.fetch(query);
 
     // Adicionar URLs das imagens aos resultados

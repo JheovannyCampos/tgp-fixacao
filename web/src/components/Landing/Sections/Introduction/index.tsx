@@ -3,8 +3,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  // CarouselNext,
+  // CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useLayout } from "@/Providers/LauyoutProvider";
 import Autoplay from "embla-carousel-autoplay";
@@ -12,17 +12,18 @@ import Autoplay from "embla-carousel-autoplay";
 const IntroductionSection = () => {
   const { siteData } = useLayout();
 
-  console.log("siteData", siteData);
-
   return (
-    <div className="w-full h-[620px] flex">
-      <div className="w-[50%] h-full pl-[60px] flex flex-col gap-3 justify-center">
-        <h1 className="font-bold text-5xl">{siteData[0]?.Titulo}</h1>
+    <div className="w-full  flex flex-col gap-2 lg:flex-row lg:h-[620px]">
+      <div className="w-full h-full pl-[60px] flex flex-col gap-3 justify-center lg:w-[50%]">
+        <h1 className="font-bold text-5xl">{siteData[0]?.title}</h1>
         <span className="max-w-[600px] text-muted-foreground md:text-xl">
-          {siteData[0]?.SubTitulo}
+          {siteData[0]?.subTitle}
         </span>
         <div className="flex gap-4">
-          <Button className="bg-blue-500 w-[120px] hover:bg-blue-600">
+          <Button
+            className="bg-blue-500 w-[120px] hover:bg-blue-600"
+            onClick={() => (window.location.href = "/about")}
+          >
             Saiba mais
           </Button>
           <Button variant={"outline"} className="w-[120px]">
@@ -30,9 +31,9 @@ const IntroductionSection = () => {
           </Button>
         </div>
       </div>
-      <div className="w-[50%] h-full flex justify-center">
+      <div className="w-full h-full flex justify-center items-center lg:w-[50%]">
         <Carousel
-          className="w-[38.5vw]"
+          className="lg:w-[38.5vw] items-center flex"
           opts={{
             loop: true,
           }}
@@ -44,23 +45,43 @@ const IntroductionSection = () => {
         >
           <CarouselContent className="h-[620px]">
             <CarouselItem>
-              <img src="assets/charles.JPG" alt="a" className="object-cover" />
+              <img
+                src={siteData[0]?.image1}
+                alt="a"
+                className="object-cover rounded-lg"
+              />
             </CarouselItem>
             <CarouselItem>
-              <img src="assets/chateau.jpg" alt="b" className="object-cover" />
+              <img
+                src={siteData[0]?.image2}
+                alt="b"
+                className="object-cover rounded-lg"
+              />
             </CarouselItem>
             <CarouselItem>
-              <img src="assets/itau.JPG" alt="c" className="object-cover" />
+              <img
+                src={siteData[0]?.image3}
+                alt="c"
+                className="object-cover rounded-lg"
+              />
             </CarouselItem>
             <CarouselItem>
-              <img src="assets/montma.JPG" alt="c" className="object-cover" />
+              <img
+                src={siteData[0]?.image4}
+                alt="c"
+                className="object-cover rounded-lg"
+              />
             </CarouselItem>
             <CarouselItem>
-              <img src="assets/unique.JPG" alt="c" className="object-cover" />
+              <img
+                src={siteData[0]?.image5}
+                alt="c"
+                className="object-cover rounded-lg"
+              />
             </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          {/* <CarouselPrevious />
+          <CarouselNext /> */}
         </Carousel>
       </div>
     </div>
