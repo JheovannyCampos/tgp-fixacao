@@ -43,7 +43,7 @@ export const insertType = defineType({
     defineField({
       name: 'insertImage2',
       title: 'Imagem insert 2',
-      type: 'imagem',
+      type: 'image',
     }),
     defineField({
       name: 'insertTitle3',
@@ -58,7 +58,7 @@ export const insertType = defineType({
     defineField({
       name: 'insertImagem3',
       title: 'Imagem insert 3',
-      type: 'imagem',
+      type: 'image',
     }),
   ],
 })
