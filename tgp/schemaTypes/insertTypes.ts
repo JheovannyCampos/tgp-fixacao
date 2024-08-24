@@ -26,11 +26,6 @@ export const insertType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'insertSubTitle1',
-      title: 'Descrição insert 1',
-      type: 'string',
-    }),
-    defineField({
       name: 'insertTitle2',
       title: 'Texto insert 2',
       type: 'string',
@@ -41,18 +36,8 @@ export const insertType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'insertSubTitle2',
-      title: 'Descrição insert 2',
-      type: 'string',
-    }),
-    defineField({
       name: 'insertTitle3',
       title: 'Texto insert 3',
-      type: 'string',
-    }),
-    defineField({
-      name: 'insertSubTitle3',
-      title: 'Descrição insert 3',
       type: 'string',
     }),
     defineField({

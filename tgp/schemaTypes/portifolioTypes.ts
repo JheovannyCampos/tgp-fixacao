@@ -21,24 +21,30 @@ export const portifolioType = defineType({
       type: 'array',
       of: [
         {
-          name: 'title',
-          title: 'Titulo',
-          type: 'string',
-        },
-        {
-          name: 'description',
-          title: 'Descrição',
-          type: 'string',
-        },
-        {
-          name: 'images',
-          title: 'Fotos',
-          type: 'array',
-          of: [
+          type: 'object',
+          name: 'post',
+          fields: [
             {
-              name: 'image',
-              title: 'Imagem',
-              type: 'image',
+              name: 'title',
+              title: 'Titulo',
+              type: 'string',
+            },
+            {
+              name: 'description',
+              title: 'Descrição',
+              type: 'string',
+            },
+            {
+              name: 'images',
+              title: 'Fotos',
+              type: 'array',
+              of: [
+                {
+                  name: 'image',
+                  title: 'Imagem',
+                  type: 'image',
+                },
+              ],
             },
           ],
         },
