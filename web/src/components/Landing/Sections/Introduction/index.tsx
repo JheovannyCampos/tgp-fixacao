@@ -7,17 +7,21 @@ import {
   // CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useLayout } from "@/Providers/LauyoutProvider";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import Autoplay from "embla-carousel-autoplay";
 
 const IntroductionSection = () => {
-  const { siteData } = useLayout();
+  const { siteData, contactRef } = useLayout();
 
   return (
     <div className="w-full  flex flex-col gap-2 lg:flex-row lg:h-[620px]">
       <div className="w-full h-full pl-[60px] flex flex-col gap-3 justify-center lg:w-[50%]">
-        <h1 className="font-bold text-5xl">{siteData[0]?.title}</h1>
+        <h1 className="font-bold text-5xl">
+          {siteData[0]?.title || <Skeleton />}
+        </h1>
         <span className="max-w-[600px] text-muted-foreground md:text-xl">
-          {siteData[0]?.subTitle}
+          {siteData[0]?.subTitle || <Skeleton />}
         </span>
         <div className="flex gap-4">
           <Button
@@ -26,7 +30,15 @@ const IntroductionSection = () => {
           >
             Saiba mais
           </Button>
-          <Button variant={"outline"} className="w-[120px]">
+          <Button
+            variant={"outline"}
+            className="w-[120px]"
+            onClick={() => {
+              contactRef.current?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
+          >
             Contato
           </Button>
         </div>
@@ -45,39 +57,59 @@ const IntroductionSection = () => {
         >
           <CarouselContent className="h-[620px]">
             <CarouselItem>
-              <img
-                src={siteData[0]?.image1}
-                alt="a"
-                className="object-cover rounded-lg"
-              />
+              {siteData[0]?.image1 ? (
+                <img
+                  src={siteData[0]?.image1}
+                  alt="a"
+                  className="object-cover rounded-lg"
+                />
+              ) : (
+                <Skeleton className="h-full w-[900px]" />
+              )}
             </CarouselItem>
             <CarouselItem>
-              <img
-                src={siteData[0]?.image2}
-                alt="b"
-                className="object-cover rounded-lg"
-              />
+              {siteData[0]?.image2 ? (
+                <img
+                  src={siteData[0]?.image2}
+                  alt="a"
+                  className="object-cover rounded-lg"
+                />
+              ) : (
+                <Skeleton className="h-full w-[900px]" />
+              )}
             </CarouselItem>
             <CarouselItem>
-              <img
-                src={siteData[0]?.image3}
-                alt="c"
-                className="object-cover rounded-lg"
-              />
+              {siteData[0]?.image3 ? (
+                <img
+                  src={siteData[0]?.image3}
+                  alt="a"
+                  className="object-cover rounded-lg"
+                />
+              ) : (
+                <Skeleton className="h-full w-[900px]" />
+              )}
             </CarouselItem>
             <CarouselItem>
-              <img
-                src={siteData[0]?.image4}
-                alt="c"
-                className="object-cover rounded-lg"
-              />
+              {siteData[0]?.image4 ? (
+                <img
+                  src={siteData[0]?.image4}
+                  alt="a"
+                  className="object-cover rounded-lg"
+                />
+              ) : (
+                <Skeleton className="h-full w-[900px]" />
+              )}
             </CarouselItem>
             <CarouselItem>
-              <img
-                src={siteData[0]?.image5}
-                alt="c"
-                className="object-cover rounded-lg"
-              />
+              {siteData[0]?.image5 ? (
+                <img
+                  src={siteData[0]?.image5}
+                  alt="a"
+                  className="object-cover rounded-lg"
+                />
+              ) : (
+                <Skeleton className="h-full w-[900px]" />
+              )}
             </CarouselItem>
           </CarouselContent>
           {/* <CarouselPrevious />

@@ -6,6 +6,11 @@ export const principalType = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+    }),
+    defineField({
       name: 'title',
       title: 'Titulo',
       type: 'string',

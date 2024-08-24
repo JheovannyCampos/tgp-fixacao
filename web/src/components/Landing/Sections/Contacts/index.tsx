@@ -1,10 +1,38 @@
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLayout } from "@/Providers/LauyoutProvider";
+import { useForm, SubmitHandler } from "react-hook-form";
+import api from "@/services/api";
+
+type Inputs = {
+  name: string;
+  email: string;
+  message: string;
+};
 
 const Contact = () => {
   const { contactRef } = useLayout();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      await api.post("/send-email", {
+        name: data.name,
+        email: data.email,
+        message: data.message,
+      });
+
+      toast.success("Mensagem enviada!");
+    } catch (error) {
+      console.error(error);
+      toast.error("Não foi possível enviar a mensagem");
+    }
+  };
 
   return (
     <section
@@ -22,18 +50,40 @@ const Contact = () => {
           </p>
         </div>
         <div className="mx-auto w-full max-w-sm space-y-2">
-          <form className="flex flex-col gap-2">
-            <Input type="text" placeholder="Nome" className="max-w-lg flex-1" />
+          <form
+            className="flex flex-col gap-2"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <Input
+              type="text"
+              placeholder="Nome"
+              className="max-w-lg flex-1"
+              required
+              {...register("name")}
+            />
+            {errors.name && (
+              <span className="text-red-500">Nome é obrigatório</span>
+            )}
             <Input
               type="email"
               placeholder="E-mail"
               className="max-w-lg flex-1"
+              required
+              {...register("email")}
             />
+            {errors.email && (
+              <span className="text-red-500">E-mail é obrigatório</span>
+            )}
             <Textarea
               placeholder="Mensagem"
               rows={4}
               className="max-w-lg flex-1"
+              required
+              {...register("message")}
             />
+            {errors.message && (
+              <span className="text-red-500">Mensagem é obrigatório</span>
+            )}
             <Button type="submit" className="bg-blue-500 hover:bg-blue-600">
               Enviar
             </Button>

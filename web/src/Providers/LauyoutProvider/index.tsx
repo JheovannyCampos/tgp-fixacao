@@ -1,7 +1,6 @@
 import {
   createContext,
   ReactNode,
-  useCallback,
   useContext,
   useEffect,
   useRef,
@@ -10,6 +9,8 @@ import {
 import Header from "../../components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import api from "@/services/api";
+import { FloatingWhatsApp } from "react-floating-whatsapp";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 type LayoutContextProps = {
   siteData: any;
@@ -39,9 +40,18 @@ const LayoutProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <LayoutContext.Provider value={value}>
-      <Header />
-      {children}
-      <Footer />
+      <SkeletonTheme baseColor="#f7f7f7">
+        <Header />
+        {children}
+        <FloatingWhatsApp
+          phoneNumber="5531994143730"
+          accountName="TGP Fixação"
+          chatMessage="Olá! Bem-vindo à TGP Fixação. Agradecemos pelo seu contato. Nossa equipe responderá em breve."
+          placeholder="Digite uma mensagem"
+          statusMessage="Geralmente respondemos em menos de 1 hora."
+        />
+        <Footer />
+      </SkeletonTheme>
     </LayoutContext.Provider>
   );
 };
