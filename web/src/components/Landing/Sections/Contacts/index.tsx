@@ -2,9 +2,10 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useLayout } from "@/Providers/LauyoutProvider";
 import { useForm, SubmitHandler } from "react-hook-form";
 import api from "@/services/api";
+import Skeleton from "react-loading-skeleton";
+import { useLayout } from "@/Providers/LauyoutProvider";
 
 type Inputs = {
   name: string;
@@ -13,7 +14,7 @@ type Inputs = {
 };
 
 const Contact = () => {
-  const { contactRef } = useLayout();
+  const { siteData, contactRef, loading } = useLayout();
   const {
     register,
     handleSubmit,
@@ -42,11 +43,10 @@ const Contact = () => {
       <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
         <div className="space-y-3">
           <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-            Entre em Contato
+            {!loading ? siteData.contact?.title : <Skeleton />}
           </h2>
           <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Preencha o formulário abaixo e um de nossos especialistas entrará em
-            contato com você.
+            {!loading ? siteData.contact?.subTitle : <Skeleton />}
           </p>
         </div>
         <div className="mx-auto w-full max-w-sm space-y-2">

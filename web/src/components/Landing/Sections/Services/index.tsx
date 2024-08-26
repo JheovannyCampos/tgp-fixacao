@@ -1,15 +1,18 @@
+import { useLayout } from "@/Providers/LauyoutProvider";
+import Skeleton from "react-loading-skeleton";
+
 const Services = () => {
+  const { siteData, loading } = useLayout();
+
   return (
     <div className="bg-[#f1f5f9]">
       <div className="flex flex-col items-center p-6 gap-3">
         <p>Nossos Serviços</p>
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-          Transforme a Fachada do seu Prédio
+          {!loading ? siteData.services?.title : <Skeleton />}
         </h2>
         <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-center">
-          Oferecemos soluções completas para a fixação de fachadas de
-          porcelanato, desde o projeto até a instalação, garantindo resultados
-          de alta qualidade.
+          {!loading ? siteData.services?.subTitle : <Skeleton />}
         </p>
       </div>
       <div className="w-full flex flex-col md:flex-row gap-3 lg:gap-0">
@@ -17,35 +20,46 @@ const Services = () => {
           <ul className="gap-6 lg:pl-[200px] px-2 flex flex-col h-full justify-center">
             <li>
               <div className="grid gap-1">
-                <h3 className="text-xl font-bold">Projeto Personalizado</h3>
+                <h3 className="text-xl font-bold">
+                  {!loading ? siteData.services?.info1 : <Skeleton />}
+                </h3>
                 <p className="text-muted-foreground">
-                  Desenvolvemos um projeto exclusivo para a sua fachada, levando
-                  em conta as características do seu prédio.
+                  {!loading ? siteData.services?.description1 : <Skeleton />}
                 </p>
               </div>
             </li>
             <li>
               <div className="grid gap-1">
-                <h3 className="text-xl font-bold">Instalação Profissional</h3>
+                <h3 className="text-xl font-bold">
+                  {!loading ? siteData.services?.info2 : <Skeleton />}
+                </h3>
                 <p className="text-muted-foreground">
-                  Nossa equipe de especialistas realiza a instalação com
-                  precisão e cuidado, garantindo a durabilidade da sua fachada.
+                  {!loading ? siteData.services?.info2 : <Skeleton />}
                 </p>
               </div>
             </li>
             <li>
               <div className="grid gap-1">
-                <h3 className="text-xl font-bold">Garantia de Qualidade</h3>
+                <h3 className="text-xl font-bold">
+                  {!loading ? siteData.services?.info3 : <Skeleton />}
+                </h3>
                 <p className="text-muted-foreground">
-                  Oferecemos garantia de qualidade em todos os nossos serviços,
-                  para que você tenha total tranquilidade.
+                  {!loading ? siteData.services?.description3 : <Skeleton />}
                 </p>
               </div>
             </li>
           </ul>
         </div>
         <div className="lg:w-[50%] w-full h-full flex justify-center">
-          <img src="assets/predio.png" alt="d" className="rounded-lg" />
+          {!loading ? (
+            <img
+              src={siteData.services?.image}
+              alt="d"
+              className="rounded-lg"
+            />
+          ) : (
+            <Skeleton />
+          )}
         </div>
       </div>
     </div>

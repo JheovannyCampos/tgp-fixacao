@@ -6,22 +6,22 @@ import {
   // CarouselNext,
   // CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useLayout } from "@/Providers/LauyoutProvider";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Autoplay from "embla-carousel-autoplay";
+import { useLayout } from "@/Providers/LauyoutProvider";
 
 const IntroductionSection = () => {
-  const { siteData, contactRef } = useLayout();
+  const { siteData, contactRef, loading } = useLayout();
 
   return (
     <div className="w-full  flex flex-col gap-2 lg:flex-row lg:h-[620px]">
       <div className="w-full h-full pl-[60px] flex flex-col gap-3 justify-center lg:w-[50%]">
         <h1 className="font-bold text-5xl">
-          {siteData[0]?.title || <Skeleton />}
+          {!loading ? siteData.principal?.title : <Skeleton />}
         </h1>
         <span className="max-w-[600px] text-muted-foreground md:text-xl">
-          {siteData[0]?.subTitle || <Skeleton />}
+          {!loading ? siteData.principal?.subTitle : <Skeleton />}
         </span>
         <div className="flex gap-4">
           <Button
@@ -57,9 +57,9 @@ const IntroductionSection = () => {
         >
           <CarouselContent className="h-[620px]">
             <CarouselItem>
-              {siteData[0]?.image1 ? (
+              {!loading && siteData.principal.image1 ? (
                 <img
-                  src={siteData[0]?.image1}
+                  src={siteData.principal.image1}
                   alt="a"
                   className="object-cover rounded-lg"
                 />
@@ -68,9 +68,9 @@ const IntroductionSection = () => {
               )}
             </CarouselItem>
             <CarouselItem>
-              {siteData[0]?.image2 ? (
+              {!loading && siteData.principal.image2 ? (
                 <img
-                  src={siteData[0]?.image2}
+                  src={siteData.principal.image2}
                   alt="a"
                   className="object-cover rounded-lg"
                 />
@@ -79,9 +79,9 @@ const IntroductionSection = () => {
               )}
             </CarouselItem>
             <CarouselItem>
-              {siteData[0]?.image3 ? (
+              {!loading && siteData.principal.image3 ? (
                 <img
-                  src={siteData[0]?.image3}
+                  src={siteData.principal.image3}
                   alt="a"
                   className="object-cover rounded-lg"
                 />
@@ -90,9 +90,9 @@ const IntroductionSection = () => {
               )}
             </CarouselItem>
             <CarouselItem>
-              {siteData[0]?.image4 ? (
+              {!loading && siteData.principal.image4 ? (
                 <img
-                  src={siteData[0]?.image4}
+                  src={siteData.principal.image4}
                   alt="a"
                   className="object-cover rounded-lg"
                 />
@@ -101,9 +101,9 @@ const IntroductionSection = () => {
               )}
             </CarouselItem>
             <CarouselItem>
-              {siteData[0]?.image5 ? (
+              {!loading && siteData.principal.image5 ? (
                 <img
-                  src={siteData[0]?.image5}
+                  src={siteData.principal.image5}
                   alt="a"
                   className="object-cover rounded-lg"
                 />
@@ -112,8 +112,6 @@ const IntroductionSection = () => {
               )}
             </CarouselItem>
           </CarouselContent>
-          {/* <CarouselPrevious />
-          <CarouselNext /> */}
         </Carousel>
       </div>
     </div>

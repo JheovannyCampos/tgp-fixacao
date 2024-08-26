@@ -12,19 +12,19 @@ import Inserts from "./pages/Inserts";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: Landing(),
+    element: <Landing />,
   },
   {
     path: "/portfolio",
-    element: Portfolio(),
+    element: <Portfolio />,
   },
   {
     path: "/about",
-    element: About(),
+    element: <About />,
   },
   {
     path: "/inserts",
-    element: Inserts(),
+    element: <Inserts />,
   },
 ]);
 

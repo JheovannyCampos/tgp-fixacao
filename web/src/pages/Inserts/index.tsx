@@ -1,4 +1,6 @@
+import { useLayout } from "@/Providers/LauyoutProvider";
 import { Portfolio } from "../Porfolio";
+import Skeleton from "react-loading-skeleton";
 
 const GraniteCards = () => {
   return (
@@ -148,6 +150,8 @@ const PorcelainCards = () => {
 };
 
 const Inserts = () => {
+  const { siteData, loading } = useLayout();
+
   return (
     <section className="w-full py-12 flex flex-col gap-52">
       <div className="container flex flex-col gap-5">
@@ -155,13 +159,20 @@ const Inserts = () => {
           <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
             Inserts
           </div>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-            Nossos inserts{" "}
-          </h2>
-          <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Conheça os diferentes tipos de inserts metálicos utilizados para
-            fixar as peças de porcelanato na fachada do prédio.
-          </p>
+          {!loading ? (
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+              {siteData.inserts?.title}
+            </h2>
+          ) : (
+            <Skeleton />
+          )}
+          {!loading ? (
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              {siteData.inserts?.subTitle}
+            </p>
+          ) : (
+            <Skeleton />
+          )}
         </div>
         <div className="w-full h-full p-5 rounded-lg bg-slate-100 mt-8 flex gap-3 flex-col">
           <h1 className="text-2xl font-semibold flex justify-center">
