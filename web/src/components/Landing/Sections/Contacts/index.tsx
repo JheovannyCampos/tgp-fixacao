@@ -6,6 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import api from "@/services/api";
 import Skeleton from "react-loading-skeleton";
 import { useLayout } from "@/Providers/LauyoutProvider";
+import { useEffect, useState } from "react";
 
 type Inputs = {
   name: string;
@@ -20,6 +21,15 @@ const Contact = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+
+  const [isAboutPage, setIsAboutPage] = useState(false);
+
+  useEffect(() => {
+    if (window.location.pathname === "/about") {
+      setIsAboutPage(true);
+    }
+  }, []);
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       await api.post("/send-email", {
@@ -37,7 +47,9 @@ const Contact = () => {
 
   return (
     <section
-      className="w-full py-12 md:py-24 lg:py-32 border-t bg-white"
+      className={`w-full py-12 md:py-24 lg:py-32 bg-white ${
+        !isAboutPage ? "border-t" : ""
+      }`}
       ref={contactRef}
     >
       <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">

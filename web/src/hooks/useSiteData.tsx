@@ -5,11 +5,7 @@ export type UseSiteDataProps = {
   siteData: {
     principal: {
       logo: string;
-      image1: string;
-      image2: string;
-      image3: string;
-      image4: string;
-      image5: string;
+      image: string;
       subTitle: string;
       title: string;
     };
@@ -71,11 +67,7 @@ export const useSiteData = () => {
   const [siteData, setSiteData] = useState<UseSiteDataProps["siteData"]>({
     principal: {
       logo: "",
-      image1: "",
-      image2: "",
-      image3: "",
-      image4: "",
-      image5: "",
+      image: "",
       subTitle: "",
       title: "",
     },

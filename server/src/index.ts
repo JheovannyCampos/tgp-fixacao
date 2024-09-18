@@ -39,7 +39,7 @@ app.get("/", (req, res) => res.send("Express on Vercel"));
 app.get("/data", async (req, res) => {
   try {
     const principalQuery =
-      '*[_type == "principal"]{logo, title, subTitle, image1, image2, image3, image4, image5}';
+      '*[_type == "principal"]{logo, title, subTitle, image}';
     const aboutQuery =
       '*[_type == "about"]{title, subTitle, cardTitle1, cardDescription1, cardTitle2, cardDescription2, cardTitle3, cardDescription3}';
     const insertsQuery =
@@ -74,20 +74,8 @@ app.get("/data", async (req, res) => {
       logo: principalData[0]?.logo ? urlFor(principalData[0].logo).url() : null,
       title: principalData[0]?.title || "",
       subTitle: principalData[0]?.subTitle || "",
-      image1: principalData[0]?.image1
-        ? urlFor(principalData[0].image1).url()
-        : null,
-      image2: principalData[0]?.image2
-        ? urlFor(principalData[0].image2).url()
-        : null,
-      image3: principalData[0]?.image3
-        ? urlFor(principalData[0].image3).url()
-        : null,
-      image4: principalData[0]?.image4
-        ? urlFor(principalData[0].image4).url()
-        : null,
-      image5: principalData[0]?.image5
-        ? urlFor(principalData[0].image5).url()
+      image: principalData[0]?.image
+        ? urlFor(principalData[0].image).url()
         : null,
     };
 

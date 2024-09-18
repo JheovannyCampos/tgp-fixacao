@@ -21,28 +21,8 @@ export const principalType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'image1',
-      title: 'Imagem carrossel 1',
-      type: 'image',
-    }),
-    defineField({
-      name: 'image2',
-      title: 'Imagem carrossel 2',
-      type: 'image',
-    }),
-    defineField({
-      name: 'image3',
-      title: 'Imagem carrossel 3',
-      type: 'image',
-    }),
-    defineField({
-      name: 'image4',
-      title: 'Imagem carrossel 4',
-      type: 'image',
-    }),
-    defineField({
-      name: 'image5',
-      title: 'Imagem carrossel 5',
+      name: 'image',
+      title: 'Imagem',
       type: 'image',
     }),
   ],
