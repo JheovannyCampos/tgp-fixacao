@@ -1,15 +1,17 @@
 import { useLayout } from "@/Providers/LauyoutProvider";
 import useContentStore from "@/store/contentStore";
 import Skeleton from "react-loading-skeleton";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { contactRef } = useLayout();
   const { siteData, loading } = useContentStore();
+  const navigate = useNavigate();
 
   return (
     <div className="w-full h-[72px] bg-[#979595] flex justify-between items-center text-white">
       <div className="pl-[20px]">
-        <a href="/">
+        <p onClick={() => navigate("/")} className="cursor-pointer">
           {!loading ? (
             <img
               src={siteData.principal?.logo}
@@ -18,20 +20,25 @@ const Header = () => {
           ) : (
             <Skeleton className="w-full h-[48px]" />
           )}
-        </a>
+        </p>
       </div>
       <nav className="flex gap-4 pr-[20px]">
-        <a href="/about">Sobre</a>
-        <a href="/inserts">Inserts</a>
-        <a href="/portfolio">Portifólio</a>
-        <a
+        <p onClick={() => navigate("/about")} className="cursor-pointer">
+          Sobre
+        </p>
+        <p onClick={() => navigate("/inserts")} className="cursor-pointer">
+          Inserts
+        </p>
+        <p onClick={() => navigate("/portfolio")} className="cursor-pointer">
+          Portifólio
+        </p>
+        <p
           onClick={() => {
-            console.log(window.location.pathname);
             if (
               window.location.pathname !== "/" &&
               window.location.pathname !== "/about"
             ) {
-              window.location.href = "/contact";
+              navigate("/contact");
             }
 
             contactRef.current?.scrollIntoView({
@@ -41,7 +48,7 @@ const Header = () => {
           className="cursor-pointer"
         >
           Contato
-        </a>
+        </p>
       </nav>
     </div>
   );

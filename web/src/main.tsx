@@ -10,34 +10,62 @@ import About from "./pages/About";
 import Inserts from "./pages/Inserts";
 import { ContactsPage } from "./pages/Contact";
 
+const LayoutWrapper: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  return (
+    <LayoutProvider>
+      {children}
+      <Toaster richColors closeButton position="top-center" />
+    </LayoutProvider>
+  );
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing />,
+    element: (
+      <LayoutWrapper>
+        <Landing />
+      </LayoutWrapper>
+    ),
   },
   {
     path: "/portfolio",
-    element: <Portfolio />,
+    element: (
+      <LayoutWrapper>
+        <Portfolio />
+      </LayoutWrapper>
+    ),
   },
   {
     path: "/about",
-    element: <About />,
+    element: (
+      <LayoutWrapper>
+        <About />
+      </LayoutWrapper>
+    ),
   },
   {
     path: "/inserts",
-    element: <Inserts />,
+    element: (
+      <LayoutWrapper>
+        <Inserts />
+      </LayoutWrapper>
+    ),
   },
   {
     path: "/contact",
-    element: <ContactsPage />,
+    element: (
+      <LayoutWrapper>
+        <ContactsPage />
+      </LayoutWrapper>
+    ),
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <LayoutProvider>
-      <Toaster richColors closeButton position="top-center" />
-      <RouterProvider router={router} />
-    </LayoutProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
