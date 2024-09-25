@@ -1,9 +1,10 @@
 import { useLayout } from "@/Providers/LauyoutProvider";
+import useContentStore from "@/store/contentStore";
 import Skeleton from "react-loading-skeleton";
-// import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const { siteData, loading, contactRef } = useLayout();
+  const { contactRef } = useLayout();
+  const { siteData, loading } = useContentStore();
 
   return (
     <div className="w-full h-[72px] bg-[#979595] flex justify-between items-center text-white">
@@ -25,14 +26,12 @@ const Header = () => {
         <a href="/portfolio">Portifólio</a>
         <a
           onClick={() => {
-            if (window.location.href !== "/") {
-              window.history.pushState(
-                {
-                  fromContact: true,
-                },
-                "",
-                "/"
-              );
+            console.log(window.location.pathname);
+            if (
+              window.location.pathname !== "/" &&
+              window.location.pathname !== "/about"
+            ) {
+              window.location.href = "/contact";
             }
 
             contactRef.current?.scrollIntoView({

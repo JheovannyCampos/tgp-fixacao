@@ -1,6 +1,3 @@
 import { createContext } from "react";
-import { UseSiteDataProps } from "./LauyoutProvider";
 
-export const LayoutContext = createContext<UseSiteDataProps | undefined>(
-  undefined
-);
+export const LayoutContext = createContext<any>(undefined);

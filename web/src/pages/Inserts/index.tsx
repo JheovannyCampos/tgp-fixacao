@@ -1,4 +1,4 @@
-import { useLayout } from "@/Providers/LauyoutProvider";
+import useContentStore from "@/store/contentStore";
 import { Portfolio } from "../Porfolio";
 import Skeleton from "react-loading-skeleton";
 
@@ -150,7 +150,7 @@ const PorcelainCards = () => {
 };
 
 const Inserts = () => {
-  const { siteData, loading } = useLayout();
+  const { siteData, loading } = useContentStore();
 
   return (
     <section className="w-full py-12 flex flex-col gap-52">

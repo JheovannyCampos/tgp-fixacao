@@ -8,6 +8,7 @@ import "./global.css";
 import { Portfolio } from "./pages/Porfolio";
 import About from "./pages/About";
 import Inserts from "./pages/Inserts";
+import { ContactsPage } from "./pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/inserts",
     element: <Inserts />,
+  },
+  {
+    path: "/contact",
+    element: <ContactsPage />,
   },
 ]);
 

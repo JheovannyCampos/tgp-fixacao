@@ -1,8 +1,8 @@
-import { useLayout } from "@/Providers/LauyoutProvider";
+import useContentStore from "@/store/contentStore";
 import Skeleton from "react-loading-skeleton";
 
 const Services = () => {
-  const { siteData, loading } = useLayout();
+  const { siteData, loading } = useContentStore();
 
   return (
     <div className="bg-[#f1f5f9]">

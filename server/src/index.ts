@@ -147,6 +147,7 @@ app.get("/data", async (req, res) => {
       contact: contactResults,
     };
 
+    res.set("Cache-Control", "public, max-age=604800000");
     res.json(combinedData);
   } catch (error) {
     if (error instanceof Error) {

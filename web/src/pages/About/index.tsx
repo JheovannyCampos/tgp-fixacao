@@ -1,6 +1,6 @@
 import Skeleton from "react-loading-skeleton";
-import { useLayout, UseSiteDataProps } from "@/Providers/LauyoutProvider";
 import Contact from "@/components/Landing/Sections/Contacts";
+import useContentStore, { UseSiteDataProps } from "@/store/contentStore";
 
 const Card = ({
   siteData,
@@ -64,7 +64,7 @@ const Card = ({
 };
 
 const About = () => {
-  const { siteData, loading } = useLayout();
+  const { siteData, loading } = useContentStore();
   return (
     <section className="w-full py-12">
       <div className="container">
@@ -92,7 +92,7 @@ const About = () => {
               {!loading ? (
                 <img
                   src={siteData.principal?.logo}
-                  className="size-full object-fit"
+                  className="size-full object-contain"
                 ></img>
               ) : (
                 <Skeleton className="size-full" />

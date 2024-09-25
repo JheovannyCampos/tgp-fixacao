@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Post, useLayout } from "@/Providers/LauyoutProvider";
+import useContentStore, { Post } from "@/store/contentStore";
 import Autoplay from "embla-carousel-autoplay";
 import Skeleton from "react-loading-skeleton";
 
@@ -75,7 +75,7 @@ const CardModal = ({ postData }: { postData: Post }) => {
 };
 
 export const Portfolio = () => {
-  const { siteData, loading } = useLayout();
+  const { siteData, loading } = useContentStore();
   return (
     <section className="w-full py-12">
       <div className="container">

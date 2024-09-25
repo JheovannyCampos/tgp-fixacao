@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useLayout } from "@/Providers/LauyoutProvider";
+import useContentStore from "@/store/contentStore";
+import { useRef } from "react";
 
 const IntroductionSection = () => {
-  const { siteData, contactRef, loading } = useLayout();
+  const { siteData, loading } = useContentStore();
+  const contactRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <div className="w-full flex flex-col gap-2 lg:flex-row lg:h-[620px]">
@@ -38,11 +40,11 @@ const IntroductionSection = () => {
         </div>
       </div>
       <div className="w-full h-full flex justify-center items-center lg:w-[50%]">
-        <div className="relative w-full h-full max-w-[900px] max-h-[600px] rounded-lg">
+        <div className="relative w-full h-full rounded-lg">
           {!loading && siteData.principal.image ? (
             <img
               src={siteData.principal.image}
-              className="object-contain w-full h-full "
+              className="object-contain w-full h-full rounded-lg"
             />
           ) : (
             <Skeleton className="h-[600px] w-[900px] rounded-lg" />

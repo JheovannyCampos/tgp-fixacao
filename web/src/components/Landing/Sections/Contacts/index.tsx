@@ -5,8 +5,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { useForm, SubmitHandler } from "react-hook-form";
 import api from "@/services/api";
 import Skeleton from "react-loading-skeleton";
-import { useLayout } from "@/Providers/LauyoutProvider";
 import { useEffect, useState } from "react";
+import useContentStore from "@/store/contentStore";
+import { useLayout } from "@/Providers/LauyoutProvider";
 
 type Inputs = {
   name: string;
@@ -15,7 +16,8 @@ type Inputs = {
 };
 
 const Contact = () => {
-  const { siteData, contactRef, loading } = useLayout();
+  const { contactRef } = useLayout();
+  const { siteData, loading } = useContentStore();
   const {
     register,
     handleSubmit,
