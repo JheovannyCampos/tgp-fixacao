@@ -1,7 +1,7 @@
 
-# [TGP Fixação]
+# TGP Fixação
 
-Website oficial para [TGP Fixação], especializada em fachadas aeradas com porcelanato.
+Website oficial para TGP Fixação, especializada em fachadas aeradas com porcelanato.
 
 ## 🏗️ Tecnologias Utilizadas
 
