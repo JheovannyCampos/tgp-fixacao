@@ -21,7 +21,7 @@ Website oficial para TGP Fixação, especializada em fachadas aeradas com porcel
 
 ## 📸 Demonstração
 
-![Demonstração do Projeto](link-para-imagem.png)
+!Demonstração do Projeto
 
 ## 📂 Estrutura do Projeto
 
@@ -33,7 +33,7 @@ Website oficial para TGP Fixação, especializada em fachadas aeradas com porcel
 
 1. Clone este repositório:
    ```bash
-   git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/JheovannyCampos/tgp-fixacao)
+   git clone [https://github.com/JheovannyCampos/tgp-fixacao.git](https://github.com/JheovannyCampos/tgp-fixacao)
    ```
 
 2. Acesse o diretório do projeto:
