@@ -81,9 +81,7 @@ app.get("/data", async (req, res) => {
     ]);
 
     const principalResultsWithUrls = {
-      logo: principalData[0]?.logo
-        ? getHighQualityUrl(principalData[0].logo)
-        : null,
+      logo: principalData[0]?.logo ? principalData[0].logo : null,
       title: principalData[0]?.title || "",
       subTitle: principalData[0]?.subTitle || "",
       image: principalData[0]?.image
