@@ -18,7 +18,7 @@ const LayoutProvider = ({ children }: { children: ReactNode }) => {
     () => ({
       contactRef,
     }),
-    [contactRef]
+    [contactRef],
   );
 
   return (
@@ -34,6 +34,7 @@ const LayoutProvider = ({ children }: { children: ReactNode }) => {
             placeholder="Digite uma mensagem"
             avatar={siteData.principal?.logo}
             statusMessage={siteData.whatsapp?.statusMessage}
+            className="z-10"
           />
         )}
         <Footer />
