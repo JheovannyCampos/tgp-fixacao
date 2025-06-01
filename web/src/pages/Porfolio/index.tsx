@@ -1,10 +1,8 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import LightGallery from "lightgallery/react";
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-thumbnail.css";
+import "lightgallery/css/lg-fullscreen.css";
+
 import {
   Dialog,
   DialogContent,
@@ -13,7 +11,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import useContentStore, { Post } from "@/store/contentStore";
-import Autoplay from "embla-carousel-autoplay";
 import Skeleton from "react-loading-skeleton";
 
 const Card = ({ postData }: { postData: Post }) => {
@@ -39,37 +36,32 @@ const Card = ({ postData }: { postData: Post }) => {
 
 const CardModal = ({ postData }: { postData: Post }) => {
   return (
-    <DialogContent>
+    <DialogContent className="max-w-[90vw] max-h-[90vh] w-auto h-auto">
       <DialogHeader>
         <DialogTitle>{postData.title}</DialogTitle>
       </DialogHeader>
-      <DialogContent>
-        <Carousel
-          className="items-center flex"
-          opts={{
-            loop: true,
-          }}
-          plugins={[
-            Autoplay({
-              delay: 3000,
-            }),
-          ]}
+      <div className="overflow-auto max-h-[70vh]">
+        <LightGallery
+          speed={500}
+          download={false}
+          plugins={[]}
+          elementClassNames="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          <CarouselContent className="h-[620px]">
-            {postData.images.map((image: string) => (
-              <CarouselItem>
-                <img
-                  src={image}
-                  alt="a"
-                  className="object-cover rounded-lg size-full"
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      </DialogContent>
+          {postData.images.map((image, index) => (
+            <a
+              key={index}
+              href={image}
+              className="block rounded overflow-hidden"
+            >
+              <img
+                src={image}
+                alt={`Imagem ${index + 1}`}
+                className="w-full h-auto object-cover rounded-lg"
+              />
+            </a>
+          ))}
+        </LightGallery>
+      </div>
     </DialogContent>
   );
 };
