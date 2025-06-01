@@ -91,12 +91,13 @@ const CardModal = ({
         <LightGallery
           speed={500}
           download={false}
-          plugins={[lgThumbnail, lgZoom, lgFullscreen]}
+          plugins={[lgZoom, lgFullscreen]}
           mode="lg-slide"
           controls={true}
           mobileSettings={{
             controls: true,
             showCloseIcon: true,
+            fullScreen: true,
             download: false,
           }}
           thumbnail={true}
