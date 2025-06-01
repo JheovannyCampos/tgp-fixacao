@@ -25,13 +25,23 @@ app.use(
   cors({
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
-  })
+  }),
 );
 
 const builder = imageUrlBuilder(client);
 
 function urlFor(source: any) {
   return builder.image(source);
+}
+
+// Função para obter imagem com qualidade máxima
+function getHighQualityUrl(source: any) {
+  if (!source || !source.asset) return null;
+
+  return urlFor(source)
+    .quality(100) // Qualidade máxima
+    .format("jpg") // JPG para máxima compatibilidade
+    .url();
 }
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
@@ -71,11 +81,13 @@ app.get("/data", async (req, res) => {
     ]);
 
     const principalResultsWithUrls = {
-      logo: principalData[0]?.logo ? urlFor(principalData[0].logo).url() : null,
+      logo: principalData[0]?.logo
+        ? getHighQualityUrl(principalData[0].logo)
+        : null,
       title: principalData[0]?.title || "",
       subTitle: principalData[0]?.subTitle || "",
       image: principalData[0]?.image
-        ? urlFor(principalData[0].image).url()
+        ? getHighQualityUrl(principalData[0].image)
         : null,
     };
 
@@ -85,17 +97,17 @@ app.get("/data", async (req, res) => {
       insertTitle1: insertsData[0]?.insertTitle1 || "",
       insertSubTitle1: insertsData[0]?.insertSubTitle1 || "",
       insertImage1: insertsData[0]?.insertImage1
-        ? urlFor(insertsData[0].insertImage1).url()
+        ? getHighQualityUrl(insertsData[0].insertImage1)
         : null,
       insertTitle2: insertsData[0]?.insertTitle2 || "",
       insertSubTitle2: insertsData[0]?.insertSubTitle2 || "",
       insertImage2: insertsData[0]?.insertImage2
-        ? urlFor(insertsData[0].insertImage2).url()
+        ? getHighQualityUrl(insertsData[0].insertImage2)
         : null,
       insertTitle3: insertsData[0]?.insertTitle3 || "",
       insertSubTitle3: insertsData[0]?.insertSubTitle3 || "",
       insertImagem3: insertsData[0]?.insertImagem3
-        ? urlFor(insertsData[0].insertImagem3).url()
+        ? getHighQualityUrl(insertsData[0].insertImagem3)
         : null,
     };
 
@@ -106,7 +118,7 @@ app.get("/data", async (req, res) => {
         title: post.title || "",
         description: post.description || "",
         images: (post.images || []).map((img: any) => {
-          return img && img.asset ? urlFor(img).url() : null;
+          return img && img.asset ? getHighQualityUrl(img) : null;
         }),
       })),
     };
@@ -121,7 +133,7 @@ app.get("/data", async (req, res) => {
       info3: servicesData[0]?.info3 || "",
       description3: servicesData[0]?.description3 || "",
       image: servicesData[0]?.image
-        ? urlFor(servicesData[0].image).url()
+        ? getHighQualityUrl(servicesData[0].image)
         : null,
     };
 
